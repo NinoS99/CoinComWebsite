@@ -57,16 +57,18 @@ router.get("/:id", async (req,res)=> {
 
 //TODO: Implement logic to add a time stamp to when user has subscribed to another user, change model to store time stamp as well
 //Subscribe to a user
-router.put(":/id/subscribe", async (req,res)=>{
+router.put("/:id/subscribe", async (req,res)=>{
     if(req.body.userId !== req.params.id){ //Check to see if logged in user (currentUser) is on their own page (Cannot subscribe to themselves)
         try {
             const user = await User.findById(req.params.id);
             const currentUser = await User.findById(req.body.userId);
-            const date = Date.now();
+            const date = new Date().toLocaleDateString();
+            const subscriptionString = req.params.id + '-' + date;
 
             if(!user.subscribers.includes(req.body.userId)){ //Check to see if user is already subscribed to this user
                 await user.updateOne({$push:{subscribers:req.body.userId}}); //Update creators subscribers (currentUsers ID added)
-                await currentUser.updateOne({$push:{subscriptions:{ $concat: ["$req.params.id", " - ", "$date"]}}}); //Update users subscriptions 
+                await currentUser.updateOne({$push:{subscriptionsWithTimeStamp: subscriptionString}}); //Update users subscriptions with Time Stamp
+                await currentUser.updateOne({$push:{subscriptions : req.params.id}}); // Update users subscriptions without Time Stamp
                 //await currentUser.updateOne({$push:{subscriptions: date}}); //Update time of when user has subscribed
                 res.status(200).json("Succesfully subscribed to user!");
 
@@ -83,7 +85,8 @@ router.put(":/id/subscribe", async (req,res)=>{
 });
 
 //Unsubscribe to a user
-router.put(":/id/unsubscribe", async (req,res)=>{
+router.put("/:id/unsubscribe", async (req,res)=>{
+
     if(req.body.userId !== req.params.id){ //Check to see if logged in user (currentUser) is on their own page (Cannot subscribe to themselves)
         try {
             const user = await User.findById(req.params.id); //User that the page belongs to
@@ -91,10 +94,11 @@ router.put(":/id/unsubscribe", async (req,res)=>{
             const date = Date.now();
 
             if(user.subscribers.includes(req.body.userId)){ //Check to see if user is already subscribed to this user
-                const subEntry = await currentUser.findOne({subscriptions: {$regex : user}});
+               // const subEntry = await currentUser.find({subscriptions:  /req.params.id/ });
 
                 await user.updateOne({$pull:{subscribers:req.body.userId}}); //Remove currentUser's ID from creators subscribers list (currentUsers ID added)
-                await currentUser.updateOne({$pull:{subscriptions:subEntry}}); //Remove user from currentUser's subscription list
+                await currentUser.updateOne({$pull:{subscriptions: {$regex : req.params.id}}}); //Remove user from currentUser's subscription list with time stamp
+                await currentUser.updateOne({$pull:{subscriptions: req.params.id}}); //Remove user from currentUser's subscription list without time stamp
                 res.status(200).json("Succesfully unsubscribed to user!");
 
             } else{

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const req = require("express/lib/request");
 const Post = require("../models/post");
+const User = require("../models/user");
 
 //Create a post
 
@@ -37,12 +38,12 @@ router.put("/:id", async(req,res)=>{
 
 //Delete a post
 
-router.put("/:id", async(req,res)=>{
+router.delete("/:id", async(req,res)=>{
 
     try{
         const post = await Post.findById(req.params.id);
         if(post.userId === req.body.userId){ //Check if post belong to user trying to update it
-            await post.deleteOne({$set:req.body});
+            await post.deleteOne();
             res.status(200).json("The post has been deleted!");
 
         } else {
@@ -75,7 +76,7 @@ router.put("/:id/like", async (req,res) => {
 
 //Get a post
 
-router.get("/:id"), async (req,res) => {
+router.get("/:id", async (req,res) => {
     try {
         const post = await Post.findById(req.params.id);
         res.status(200).json(post);
@@ -83,7 +84,7 @@ router.get("/:id"), async (req,res) => {
         res.status(500).json(err);
         
     }
-};
+});
 
 //Get all posts of users subscriptions (timeline)
 
@@ -93,7 +94,7 @@ router.get("/timeline/all", async (req,res) => {
         const currentUser = await User.findById(req.body.userId);
         const userPosts = await Post.find({ userId: currentUser._id });
         const subbedPosts = await Promise.all(
-            currentUser.followings.map(subbedId=>{
+            currentUser.subscriptions.map((subbedId) => {
                 return Post.find({ userId: subbedId });
             })
         );
@@ -101,6 +102,6 @@ router.get("/timeline/all", async (req,res) => {
     } catch(err)  {
         res.status(500).json(err);
     }
-})
+});
 
 module.exports = router;

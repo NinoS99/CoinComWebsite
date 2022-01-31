@@ -27,6 +27,10 @@ const UserSchema = new mongoose.Schema({
         type:Array,
         default:[],
     },
+    subscriptionsWithTimeStamp:{
+        type:Array,
+        default:[],
+    },
     subscribers:{
         type:Array,
         default:[],
