@@ -5,14 +5,17 @@ import Topbar from '../../components/topbar/Topbar';
 import Rightbar from '../../components/rightbar/Rightbar';
 import Feed from '../../components/feed/Feed';
 //import {Users} from "../../dummyData"
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
     const username = useParams().username;
+    const [subscribers, setSubscribers] = useState([]);
+    const { user: currentUser, dispatch } = useContext(AuthContext);
   
     useEffect(() => {
       const fetchUser = async () => {
@@ -22,6 +25,31 @@ export default function Profile() {
       };
       fetchUser();
     }, [username]);
+
+    console.log(user._id);
+
+    useEffect(() => {
+      const getSubscribers = async ()=>{
+        try {
+          const subscribersList = await axios.get("/users/subscribers/" + user._id);
+          setSubscribers(subscribersList.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getSubscribers();
+    },[user]);
+
+    const filterData = subscribers.filter(item => item._id.includes(currentUser._id));
+    var subscribed;
+  
+    if(filterData.length === 1){
+       subscribed = true;
+    } else {
+       subscribed = false;
+    }
+
+    console.log(subscribed);
 
     return (
       <>
@@ -55,10 +83,12 @@ export default function Profile() {
                 <span className="profileInfoDesc">{user.desc}</span>
               </div>
             </div>
+            {user.username !== currentUser.username && subscribed === true && (
             <div className="profileRightBottom">
               <Feed username={username} />
               <Rightbar user={user} />
             </div>
+            )}
           </div>
         </div>
       </>

@@ -38,31 +38,23 @@ export default function Rightbar({ user }) {
     getSubscribers();
   },[user]);
 
-  console.log(subscribers);
-  console.log(currentUser._id);
   const filterData = subscribers.filter(item => item._id.includes(currentUser._id));
-  console.log(filterData);
-  //console.log(subscribers["_id"].includes(currentUser._id));
-  var subscribed = 0 ;
+  var subscribed;
 
   if(filterData.length === 1){
-     subscribed = 1;
+     subscribed = true;
   } else {
-     subscribed = 2;
+     subscribed = false;
   }
-
-  console.log(subscribed);
 
   const [followed, setFollowed] = useState(
     currentUser.subscriptions.includes(user && user.id)
   );
 
-  console.log(followed);
-
 
   const handleClick = async () => {
     try {
-      if (followed) {
+      if (subscribed === true) {
         await axios.put('/users/'+ user._id + '/unsubscribe', {
           userId: currentUser._id,
         });
@@ -73,7 +65,8 @@ export default function Rightbar({ user }) {
         });
         dispatch({ type: "FOLLOW", payload: user._id });
       }
-      setFollowed(!followed);
+      setFollowed(!subscribed);
+      window.location.reload();
     } catch (err) {
     }
   };
@@ -104,8 +97,8 @@ export default function Rightbar({ user }) {
       <>
         {user.username !== currentUser.username && ( //ToDO: Implement logic to show or hide profile based on if subbed to. Implement to every profile component or page
           <button className="rightbarFollowButton" onClick={handleClick}>
-            {followed ? "Unfollow" : "Follow"}
-            {followed ? <Remove /> : <Add />}
+            {subscribed ? "Unfollow" : "Follow"}
+            {subscribed ? <Remove /> : <Add />}
           </button>
         )}
       <h4 className='rightbarTitle'>Creator Information</h4>
