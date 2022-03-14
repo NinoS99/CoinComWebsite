@@ -19,6 +19,14 @@ const UserSchema = new mongoose.Schema({
         required:true,
         min:6,
     },
+    profilePicture: {
+        type: String,
+        default: "",
+      },
+      coverPicture: {
+        type: String,
+        default: "",
+      },
     profilePicture:{
         type:String,
         default:"",
@@ -48,8 +56,8 @@ const UserSchema = new mongoose.Schema({
         max:50
     },
     creatorType:{
-        type:Number,
-        enum:[1,2,3],
+        type:String,
+        max:50
     },
 
 

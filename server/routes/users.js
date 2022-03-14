@@ -44,8 +44,21 @@ router.delete("/:id", async (req,res)=>{
     }
 });
 
-//Get a user
-router.get("/:id", async (req,res)=> {
+//Get a user with username
+router.get("/:username", async (req,res)=> {
+
+    try {
+        const user = await User.findOne({username:req.params.username});
+        const {password, ...other} = user._doc; //Hide the password in the response 
+        res.status(200).json(other);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//Get a user with user id
+router.get("/id/:id", async (req,res)=> {
+
     try {
         const user = await User.findById(req.params.id);
         const {password, ...other} = user._doc; //Hide the password in the response 
@@ -84,6 +97,46 @@ router.put("/:id/subscribe", async (req,res)=>{
     }
 });
 
+//Get subscriptions
+router.get("/subscriptions/:userId", async (req,res)=>{
+    try {
+        const user = await User.findById(req.params.userId);
+        const subscriptions = await Promise.all(
+            user.subscriptions.map(subscriptionId=>{
+                return User.findById(subscriptionId)
+            })
+        )
+        let subscriptionList = [];
+        subscriptions.map(subscription=>{
+            const {_id,username,profilePicture} = subscription;
+            subscriptionList.push({_id, username, profilePicture});
+        });
+        res.status(200).json(subscriptionList)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+//Get subscribers
+router.get("/subscribers/:userId", async (req,res)=>{
+    try {
+        const user = await User.findById(req.params.userId);
+        const subscribers = await Promise.all(
+            user.subscribers.map(subscriberId=>{
+                return User.findById(subscriberId)
+            })
+        )
+        let subscribersList = [];
+        subscribers.map(subscriber=>{
+            const {_id,username,profilePicture} = subscriber;
+            subscribersList.push({_id, username, profilePicture});
+        });
+        res.status(200).json(subscribersList)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 //Unsubscribe to a user
 router.put("/:id/unsubscribe", async (req,res)=>{
 
@@ -97,7 +150,7 @@ router.put("/:id/unsubscribe", async (req,res)=>{
                // const subEntry = await currentUser.find({subscriptions:  /req.params.id/ });
 
                 await user.updateOne({$pull:{subscribers:req.body.userId}}); //Remove currentUser's ID from creators subscribers list (currentUsers ID added)
-                await currentUser.updateOne({$pull:{subscriptions: {$regex : req.params.id}}}); //Remove user from currentUser's subscription list with time stamp
+                await currentUser.updateOne({$pull:{subscriptionsWithTimeStamp: {$regex : req.params.id}}}); //Remove user from currentUser's subscription list with time stamp
                 await currentUser.updateOne({$pull:{subscriptions: req.params.id}}); //Remove user from currentUser's subscription list without time stamp
                 res.status(200).json("Succesfully unsubscribed to user!");
 
