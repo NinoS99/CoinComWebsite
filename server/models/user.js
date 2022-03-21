@@ -19,6 +19,12 @@ const UserSchema = new mongoose.Schema({
         required:true,
         min:6,
     },
+
+    walletAddress:{
+        type:String,
+        
+    },
+
     profilePicture: {
         type: String,
         default: "",

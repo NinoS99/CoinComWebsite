@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom"
 export default function Register() {
     const username = useRef();
     const email = useRef();
+    const walletAddress = useRef();
     const password = useRef();
     const passwordAgain = useRef();
     const history = useHistory();

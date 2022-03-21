@@ -89,6 +89,18 @@ export default function Profile() {
               <Rightbar user={user} />
             </div>
             )}
+            {user.username !== currentUser.username && subscribed === false && (
+            <div className="profileRightBottom">
+              <span className='notSubbedProfile'> Please subscribe to this user to gain access to their awesome content!</span>
+              <Rightbar user={user} />
+            </div>
+            )}
+            {user.username == currentUser.username && (
+            <div className="profileRightBottom">
+              <Feed username={username} />
+              <Rightbar user={user} />
+            </div>
+            )}
           </div>
         </div>
       </>
