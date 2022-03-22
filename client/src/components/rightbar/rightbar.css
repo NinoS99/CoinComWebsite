@@ -101,6 +101,23 @@
     font-weight: 500;
     cursor: pointer;
   }
+
+  .rightbarSettingsButton{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    border: none;
+    background-color: #1872f2;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: right;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+  }
   
   .rightbarFollowButton:focus{
     outline: none;

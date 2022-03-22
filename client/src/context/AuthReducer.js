@@ -26,6 +26,14 @@ const AuthReducer = (state, action) => {
             subscriptions: [...state.user.subscriptions, action.payload],
           },
         };
+        case "WALLETADDRESS":
+          return {
+            ...state,
+            user: {
+              ...state.user,
+              walletAddress: [...state.user.walletAddress, action.payload],
+            },
+          };
       case "UNFOLLOW":
         return {
           ...state,

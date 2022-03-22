@@ -130,8 +130,8 @@ const minABI = [
 
 //Declare addresses
 const tokenAddress = "0x972FEb1FfFB6aAEF766123e24eCF5162c09d6dCa";
-const toAddress = "0x72BfF596221936283069eC616cC9b027f5d5bC8c"
-const fromAddress = "0x0d03Ebc9565874D875C77b4868FDA4Bff2663C34";
+const toAddress = "0x72BfF596221936283069eC616cC9b027f5d5bC8c";
+//const fromAddress = "0x0d03Ebc9565874D875C77b4868FDA4Bff2663C34"; TO DELETE
 const amountToSend = '100';
 const data = 'a9059cbb00000000000000000000000072bff596221936283069ec616cc9b027f5d5bc8c0000000000000000000000000000000000000000000000000000000000000064';
 
@@ -234,6 +234,12 @@ window.addEventListener('load', function(){
             {subscribed ? <Remove /> : <Add />}
           </button>
         )}
+        {user.username === currentUser.username && (
+          <Link to={'/settings'} style={{ textDecoration: 'none' }}>
+            <button className='rightbarSettingsButton' > Settings
+            </button>
+          </Link> 
+        )}
       <h4 className='rightbarTitle'>Creator Information</h4>
       <div className="rightbarInfo">
         <div className="rightbarInfoItem">
@@ -262,8 +268,8 @@ window.addEventListener('load', function(){
         </div>
         
       </>
-    );
-  };
+    )
+  }
 
   return (
     <div className='sidebar'>

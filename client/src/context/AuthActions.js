@@ -20,3 +20,8 @@ export const LoginStart = (userCredentials) => ({
     type: "UNFOLLOW",
     payload: userId,
   });
+
+  export const walletAddress = (userId) => ({
+    type: "WALLETADDRESS",
+    payload: userId,
+  });

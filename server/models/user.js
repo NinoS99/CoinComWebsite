@@ -22,7 +22,12 @@ const UserSchema = new mongoose.Schema({
 
     walletAddress:{
         type:String,
-        
+        default: "",
+    },
+
+    monthlyPrice:{
+        type: Number,
+        default: 20,
     },
 
     profilePicture: {

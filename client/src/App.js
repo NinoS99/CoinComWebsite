@@ -3,6 +3,8 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
+import Connect from "./pages/connect/Connect"
+import Settings from "./pages/settings/Settings"
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,7 +26,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           {user ? <Home /> : <Register/>}
-          </Route>
+        </Route>
         <Route exact path="/login">
           {user ? <Redirect to="/" /> : <Login />} 
         </Route>
@@ -33,6 +35,12 @@ function App() {
         </Route> 
         <Route exact path="/profile/:username">
           <Profile />
+        </Route> 
+        <Route path="/connect">
+        <Redirect to="/connect" /> : <Connect />
+        </Route> 
+        <Route path="/settings">
+        <Redirect to="/settings" /> : <Settings />
         </Route> 
       </Switch>
     </Router>

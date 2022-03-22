@@ -1,0 +1,44 @@
+.connectTitle{
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    background-color: #1877f3 ;
+    display: flex;
+    align-items: center;
+    top: 0;
+    justify-content: center;
+}
+
+.connectSubTitle{
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    background-color: #1877f3 ;
+    display: flex;
+    align-items: center;
+    top: 10px;
+    justify-content: center;
+    text-size-adjust: 20px;
+    margin-top: 20px;
+}
+
+.connectButton{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #1872f2;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%
+}
