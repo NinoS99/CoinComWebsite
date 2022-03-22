@@ -26,8 +26,7 @@ export default function Topbar(){
                     </div>
                 <div className= 'topbarRight'>
                     <div className='topbarLink'>
-                        <span className='topbarLink'>Homepage </span>
-                        <Link to={'/connect'}>
+                        <Link to={'/connect'} style={{textDecoration:"none"}}>
                         <span className='topbarLink'>Connect to Metamask </span>
                         </Link>
                     </div>
