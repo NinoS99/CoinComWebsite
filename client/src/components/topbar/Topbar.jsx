@@ -15,7 +15,7 @@ export default function Topbar(){
             className='topbarContainer'>
                 <div className= 'topbarLeft'>
                     <Link to='/' style={{textDecoration:"none"}}>
-                        <span className="logo">GeneBase</span> 
+                        <img style= {{flex:1 , width: undefined, height: '45px', resizeMode: 'contain'}} src={process.env.PUBLIC_URL + '/assets/logo.png'} alt="logo" />
                     </Link>
                 </div>
                 <div className= 'topbarCenter'>
@@ -26,10 +26,9 @@ export default function Topbar(){
                     </div>
                 <div className= 'topbarRight'>
                     <div className='topbarLink'>
-                        <span className='topbarLink'>Homepage </span>
-                        <span className='topbarLink'>Timeline </span>
                     </div>
                     <div className="topbarIcons">
+                        {/*
                         <div className='topbarIconItem'>
                             <Person />
                             <span className="topbarIconBadge">1</span>
@@ -38,10 +37,11 @@ export default function Topbar(){
                             <Chat />
                             <span className="topbarIconBadge">2</span>
                         </div>
+                        */}
                         <div className='topbarIconItem'>
                             <Notifications />
                             <span className="topbarIconBadge">1</span>
-                        </div>
+                    </div> 
                     </div>
                     <Link to= {`/profile/${user.username}`}>
                     <img src={user.profilePicture ? PF + user.profilePicture : PF + 'person/noAvatar.png'}alt="" className="topbarImg" />

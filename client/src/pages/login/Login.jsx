@@ -21,9 +21,9 @@ export default function Login() {
     return (
       <div className='login'>
           <div className="loginWrapper">
-              <div className="loginLeft">
-                  <h3 className='loginLogo'>GeneBase</h3>
-                  <span className='loginDesc'> Welcome to GeneBase! Connect with inspiring creators!</span>
+          <div className="loginLeft">
+                <img style= {{width: undefined, height: undefined, paddingRight: '20px'}} src={process.env.PUBLIC_URL + '/assets/logo.png'} alt="logo" />  
+                <span className='loginDesc'> Welcome to GeneBase! Connect with inspiring creators!</span>
               </div>
               <div className="loginRight">
                   <form className="loginBox" onSubmit={handleClick}>

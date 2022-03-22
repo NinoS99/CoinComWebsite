@@ -39,6 +39,7 @@ export default function Post({post}) {
       setisLiked(!isLiked)
   };
 
+
   return (
     <div className="post">
         <div className='postWrapper'>
@@ -56,7 +57,8 @@ export default function Post({post}) {
                     <span className='postDate'> {format(post.createdAt)}</span>
                 </div>
                 <div className='postTopRight'>
-                <MoreVert/>
+                <MoreVert>
+                </MoreVert>
                 </div>
             </div>
             <div className='postCenter'>

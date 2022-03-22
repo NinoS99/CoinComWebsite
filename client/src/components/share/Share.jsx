@@ -68,14 +68,6 @@ export default function Share() {
                     <Label htmlColor='green' className='shareIcon'/>
                     <span className='shareOptionText'> Tag </span>
                 </div>
-                <div className='shareOption'>
-                    <Room htmlColor='blue' className='shareIcon'/>
-                    <span className='shareOptionText'> Location </span>
-                </div>
-                <div className='shareOption'>
-                    <EmojiEmotions htmlColor='goldenrod' className='shareIcon'/>
-                    <span className='shareOptionText'> Mood </span>
-                </div>
                 <button className='shareButton' type='submit'>Share Now!</button>
             </form>
         </div>

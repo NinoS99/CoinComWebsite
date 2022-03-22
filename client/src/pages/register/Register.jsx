@@ -3,6 +3,7 @@ import React from 'react'
 import { useRef } from "react";
 import "./register.css";
 import {useHistory} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Register() {
     const username = useRef();
@@ -38,17 +39,20 @@ export default function Register() {
       <div className='login'>
           <div className="loginWrapper">
               <div className="loginLeft">
-                  <h3 className='loginLogo'>GeneBase</h3>
-                  <span className='loginDesc'> Welcome to GeneBase! Connect with inspiring creators!</span>
+                <img style= {{width: undefined, height: undefined, paddingRight: '20px'}} src={process.env.PUBLIC_URL + '/assets/logo.png'} alt="logo" />  
+                <span className='loginDesc'> Welcome to GeneBase! Connect with inspiring creators!</span>
               </div>
               <div className="loginRight">
                   <form className="loginBox" onSubmit={handleClick}>
-                      <input placeholder="Username" required ref={username} className="loginInput" />
-                      <input placeholder="Email" required ref={email} className="loginInput" type="email" />
-                      <input placeholder="Password" required ref={password} className="loginInput" type="password" minLength="6"/>
-                      <input placeholder="Password Again" required ref={passwordAgain} className="loginInput" type="password" minLength="6" />
-                      <button className='loginButton' type='submit'>Sign Up</button>
-                      <button className="loginRegisterButton"> Log into Account</button>
+                    <input placeholder="Username" required ref={username} className="loginInput" />
+                    <input placeholder="Email" required ref={email} className="loginInput" type="email" />
+                    <input placeholder="Password" required ref={password} className="loginInput" type="password" minLength="6"/>
+                    <input placeholder="Password Again" required ref={passwordAgain} className="loginInput" type="password" minLength="6" />
+                    <button className='loginButton' type='submit'>Sign Up</button>
+                    <Link to = "/login">
+                        <button className="loginRegisterButton"> Log into Account</button>
+                    </Link>
+                      
                   </form>
               </div>
           </div> 

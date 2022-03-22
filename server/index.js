@@ -60,7 +60,7 @@ app.use("/server/users" , userRoute);
 app.use("/server/auth" , authRoute);
 app.use("/server/posts" , postRoute);
 
-app.listen(8800,()=>{
+app.listen(8800,"0.0.0.0",()=>{
     console.log("Backend Server is Running!..")
 })
 

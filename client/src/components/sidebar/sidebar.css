@@ -37,11 +37,21 @@
   }
   
   .sidebarButton {
-    width: 150px;
+    
     border: none;
     padding: 10px;
     border-radius: 5px;
-    font-weight: 500;
+    font-weight: 700;
+  }
+
+  .sidebarButtonFade {
+    align-self: center;
+    border: none;
+    padding: 10px;
+    width: 150px;
+    border-radius: 5px;
+    font-weight: 700;
+    background-color: rgba(131, 117, 39, 0.486);
   }
   
   .sidebarHr {
@@ -52,4 +62,11 @@
     padding: 0;
     margin: 0;
     list-style: none;
+  }
+  
+  .sidebarBottom {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    align-self: flex-end;
   }

@@ -75,18 +75,21 @@ export default function Rightbar({ user }) {
     return (
       <>
        <div className='birthdayContainer'>
-            <img className='birthdayImg' src={PF+"gift.png"} alt=''/>
-            <span className='birthdayText'>
-              <b>Jon Black </b> and <b> 4 other creators </b>  have a birthday today!
-              </span>
+            
             </div>  
-            <img className='rightbarAd' src={PF+"ad.png"} alt=''/>
-            <h4 className='rightbarTitle'>Online Creators</h4>
-            <ul className='rightbarFriendList'>
+            <h4 className='rightbarTitle'>Powered By:</h4>
+            <img style= {{flex:1 , width: '90%', height: undefined, resizeMode: 'contain'}} src={process.env.PUBLIC_URL + '/assets/ad.png'} alt="logo" />
+            <a href="https://metamask.io/">
+              <img style= {{flex:1 , width: '90%', height: undefined, resizeMode: 'contain'}} src={process.env.PUBLIC_URL + '/assets/meta.png'} alt="logo" />
+              </a>
+            <h4 className='rightbarTitle'>How to Buy:</h4>
+            <h7 className='rightbarTitle'>To buy GeneCoin* you must</h7>
+            {/* <ul className='rightbarFriendList'>
               {Users.map((u)=>(
                 <Online key={u.id} user={u} />
               ) )}
             </ul>
+              */}
       </>
     )
   }

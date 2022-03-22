@@ -39,7 +39,6 @@ router.put("/:id", async(req,res)=>{
 //Delete a post
 
 router.delete("/:id", async(req,res)=>{
-
     try{
         const post = await Post.findById(req.params.id);
         if(post.userId === req.body.userId){ //Check if post belong to user trying to update it
