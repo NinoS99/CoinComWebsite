@@ -1,0 +1,147 @@
+.post1 {
+    width: 70%;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    margin: 30px 0;
+    justify-items: center;
+    margin-left: 15%;
+  }
+  .topbarContainer{
+    height: 50px;
+    width: 100%;
+    background-color: #3b3b3b ;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    }
+
+    .editInput{
+        height: 50px;
+        width: 98%;
+        border-radius: 10px;
+        border: 1px solid gray;
+        font-size: 18px;
+        padding-left: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: inline-grid;
+    }
+
+    .editInput1{
+        padding:0.5em;
+        background-color:white;
+        width:98%;
+        border-radius: 10px;
+        border: 1px solid gray;
+        margin-bottom: 20px;
+      }
+
+    .editHeader{
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    display: block;
+    margin-left: 38%;
+    }
+
+    .confirmButton{
+        height:fit-content;
+        border-radius: 10px;
+        border: none;
+        background-color: #3b3b3b;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 0px;
+        width:fit-content;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+  .postWrapper {
+    padding: 10px;
+  }
+  
+  .postTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #3b3b3b;
+    color: ghostwhite;
+  }
+  
+  .postTopLeft {
+    display: flex;
+    align-items: center;
+  }
+  
+  .postTopRight {
+    color: white;
+  }
+  
+  .postProfileImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .postUsername {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 10px;
+  }
+  
+  .postDate{
+      font-size: 12px;
+  }
+  
+  .postCenter{
+      margin: 20px 20px;
+  }
+  
+  .postImg1{
+      margin: 10px 0px 0px 0px;
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      justify-content: left;
+  }
+  
+  .postBottom{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  .postBottomLeft{
+      display: flex;
+      align-items: center;   
+  }
+  
+  .likeIcon{
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+      cursor: pointer;
+  }
+  
+  .postLikeCounter{
+      font-size: 15px;
+  }
+  
+  .postCommentText{
+      cursor: pointer;
+      border-bottom: 1px dashed gray;
+      font-size: 15px;
+      margin-left: 20px;
+  }

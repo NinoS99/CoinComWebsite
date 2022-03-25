@@ -1,8 +1,31 @@
+.metatopbanner{
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    background-color: #3b3b3b;
+    align-self: center;
+    color: white;
+    align-items: center;
+    align-self: center;
+    top: 0;
+    justify-content: center;
+    display: flex;
+}
+
+.metamaskImage1{
+    justify-content: center;
+    margin-left: 42%;
+    display: flex;
+    width: 300px;
+    margin-bottom: 20px;
+}
 .connectTitle{
     text-align: center;
     height: 50px;
     width: 100%;
-    background-color: #1877f3 ;
+    background-color: #3b3b3b;
+    align-self: center;
+    color: white;
     display: flex;
     align-items: center;
     top: 0;
@@ -13,20 +36,23 @@
     text-align: center;
     height: 40px;
     width: 100%;
-    background-color: #1877f3 ;
+    background-color: #3b3b3b ;
+    color: white;
     display: flex;
+    align-self: center;
     align-items: center;
     top: 10px;
     justify-content: center;
     text-size-adjust: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .connectButton{
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border: none;
-    background-color: #1872f2;
+    background-color: #3b3b3b;
     color: white;
     border-radius: 5px;
     padding: 5px 10px;

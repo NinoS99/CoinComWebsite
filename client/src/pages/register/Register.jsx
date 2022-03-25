@@ -2,7 +2,8 @@ import axios from 'axios';
 import React from 'react'
 import { useRef } from "react";
 import "./register.css";
-import {useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function Register() {
     const username = useRef();
@@ -11,6 +12,7 @@ export default function Register() {
     const password = useRef();
     const passwordAgain = useRef();
     const history = useHistory();
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
 
     const handleClick = async (e)=>{
@@ -38,9 +40,15 @@ export default function Register() {
     return (
       <div className='login'>
           <div className="loginWrapper">
-              <div className="loginLeft">
-                  <h3 className='loginLogo'>GeneBase</h3>
-                  <span className='loginDesc'> Welcome to GeneBase! Connect with inspiring creators!</span>
+              <div className="loginLeft1">
+                  <img style= {{borderRadius: "10px", display:'flex' , width: '400px', height: '200px', marginTop: "0px"}} src={PF + 'logo2.png'} alt="logo" />
+                  <span className='loginDesc2'> </span>
+                  <span className='loginDesc2'> Ready to Join the Action?</span>
+                  <span className='loginDesc2'> </span>
+                  <span className='loginDesc2'> </span>
+                  <span className='loginDesc2'> </span>
+                  <span className='loginDesc2'> Powered By:</span>
+                  <img style= {{borderRadius: "10px", width: undefined, height: '100px', marginTop: "0px", paddingTop: "10px", marginLeft: "150px"}} src={PF + 'metamaskFox.png'} alt="logo" />
               </div>
               <div className="loginRight">
                   <form className="loginBox" onSubmit={handleClick}>
@@ -48,8 +56,10 @@ export default function Register() {
                       <input placeholder="Email" required ref={email} className="loginInput" type="email" />
                       <input placeholder="Password" required ref={password} className="loginInput" type="password" minLength="6"/>
                       <input placeholder="Password Again" required ref={passwordAgain} className="loginInput" type="password" minLength="6" />
-                      <button className='loginButton' type='submit'>Sign Up</button>
-                      <button className="loginRegisterButton"> Log into Account</button>
+                      <button className='loginButton1' type='submit'>Sign Up</button>
+                      <Link to={"./login"} style={{textDecoration:"none"}}> 
+                      <button className="loginButton1"> Log into Account</button>
+                      </Link>
                   </form>
               </div>
           </div> 

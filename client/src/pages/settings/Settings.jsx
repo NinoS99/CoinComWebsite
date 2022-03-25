@@ -9,6 +9,7 @@ import {useEffect, useState, useContext} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import {PermMedia, Label, Room, EmojiEmotions, Cancel} from "@material-ui/icons"
 import { useRef } from "react";
 import {useHistory} from "react-router-dom";
 import {Link} from "react-router-dom";
@@ -18,6 +19,7 @@ import {Link} from "react-router-dom";
 
 
 export default function Settings() {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
    // const username = useParams().username;
     const { user: currentUser, dispatch } = useContext(AuthContext);   
@@ -32,6 +34,11 @@ export default function Settings() {
     const passwordAgain = useRef();
     const history = useHistory();
     const [data, setData] = useState([]);
+    const [file, setFile] = useState(null);
+    const [file1, setFile1] = useState(null);
+
+    console.log(currentUser.profilePicture);
+    console.log(user);
 
     useEffect(() => {
         const getData = async ()=>{
@@ -48,10 +55,13 @@ export default function Settings() {
 
 
     console.log(data._id);
+    console.log(data.profilePicture);
+    console.log(file);
+    console.log(file1);
 
     const handleClick = async (e)=>{
         e.preventDefault();
-        console.log(username.current.value);
+
 
         const user1 = {
             userId: data._id,
@@ -62,7 +72,43 @@ export default function Settings() {
             from: from.current.value ? from.current.value : data.from,
             creatorType: creatorType.current.value ? creatorType.current.value : data.creatorType,
             monthlyPrice: monthlyPrice.current.value ? monthlyPrice.current.value : data.monthlyPrice,
+
         };
+
+        if(file){
+          const data = new FormData();
+          const fileName = Date.now() + file.name;
+          data.append("name", fileName);
+          data.append("file", file);
+          console.log(fileName); 
+          user1.profilePicture = fileName;
+          console.log(user1)
+          console.log(PF + fileName)
+
+          try {
+            await axios.post("/upload", data);
+          } catch (err) {
+              console.log(err)
+          }
+        }
+
+        if(file1){
+          const data = new FormData();
+          const fileName = Date.now() + file1.name;
+          data.append("name", fileName);
+          data.append("file", file1);
+          console.log(fileName); 
+          user1.coverPicture = fileName;
+          console.log(user1)
+          console.log(PF + fileName)
+
+          try {
+            await axios.post("/upload", data);
+          } catch (err) {
+              console.log(err)
+          }
+        }
+
         try {
             await axios.put("/users/" + data._id, user1);
             console.log(user1);
@@ -80,8 +126,19 @@ export default function Settings() {
         <div className='login'>
           <div className="loginWrapper">
               <div className="loginLeft">
-                  <h3 className='loginLogo'>CoinComm</h3>
+                  <h3 className='loginLogo'>CoinCom</h3>
                   <span className='loginDesc'> Settings</span>
+
+                <label htmlFor='file' className='shareOption'>
+                    <img src={data.profilePicture ? PF + data.profilePicture : PF + 'person/noAvatar.png'} alt="" className="shareProfileImg1" />
+                    <span className='shareOptionText1'> Update Profile Picture </span>
+                    <input style={{display: "none" }} type="file" id="file" accept='.png,.jpeg,.jpg' onChange={(e)=>setFile(e.target.files[0])} />
+                </label>
+                <label htmlFor='file1' className='shareOption'>
+                    <img src={data.coverPicture ? PF + data.coverPicture : PF + 'person/noCover.png'}alt="" className="shareCoverImg" />
+                    <span className='shareOptionText1'> Update Cover Picture </span>
+                    <input style={{display: "none" }} type="file" id="file1" accept='.png,.jpeg,.jpg' onChange={(e)=>setFile1(e.target.files[0])} />
+                </label>
               </div>
               <div className="loginRight">
                   <form className="loginBox" >

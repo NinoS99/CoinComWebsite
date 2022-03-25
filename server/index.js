@@ -13,6 +13,7 @@ const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
 const multer = require("multer")
 const path = require("path")
+const user = require("./models/User");
 
 dotenv.config();
 

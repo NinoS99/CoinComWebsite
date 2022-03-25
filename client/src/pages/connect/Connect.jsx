@@ -69,13 +69,16 @@ export default function Connect() {
 
 return (
     <>
+    <div classname='metatopbanner'>
+       <img  className="metamaskImage1" src={PF+"metamask.png"} alt=''/>
+    </div>
     <div className='connectTitle'> Eager to Get Started?</div>
     <div className='connectSubTitle'> Learn How To Connect Your Metamask Wallet to Start Getting Paid!</div>
-    <div className='connectSubTitle'> *Instructions on how to connect*</div>
+    <a className='connectSubTitle' target="_blank" href="https://metamask.io/faqs/"> Click Here To Learn About Metamask! </a>
     <button className='connectButton' onClick={handleClick}>
         {currentUser.walletAddress ? "Already Connected to Metamask!" : "Click Here To Connect to Metamask"}
     </button>
-    <Link to={`/profile/${username}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/profile/${currentUser.username}`} style={{ textDecoration: 'none' }}>
         <button className='connectButton' type='submit' >Back</button>
     </Link> 
 

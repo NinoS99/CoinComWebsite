@@ -54,6 +54,10 @@ const UserSchema = new mongoose.Schema({
         type:Array,
         default:[],
     },
+    pending:{
+        type:String,
+        default:"",
+    },
     desc:{
         type:String,
         max:50,

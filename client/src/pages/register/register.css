@@ -20,6 +20,14 @@
     flex-direction: column;
     justify-content: center;
   }
+
+  .loginLeft1{
+    flex: 1;
+    display:inline-table;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 0%;
+  }
   
   .loginLogo {
     font-size: 50px;
@@ -54,15 +62,25 @@
       outline: none;
   }
   
-  .loginButton{
+  .loginButton1{
       height: 50px;
       border-radius: 10px;
       border: none;
-      background-color: #1775ee;
+      background-color: gray;
       color: white;
       font-size: 20px;
       font-weight: 500;
       cursor: pointer;
+  }
+
+  .loginDesc2 {
+    font-size: 20px;
+    padding-top: 20px;
+    width: 400px;
+    flex-direction:initial;
+    display: flex;
+    text-align: center;
+    justify-content: center;
   }
   
   .loginForgot{

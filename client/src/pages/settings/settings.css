@@ -24,9 +24,35 @@
   .loginLogo {
     font-size: 50px;
     font-weight: 800;
-    color: #1775ee;
+    color: #3b3b3b;
     margin-bottom: 10px;
   }
+
+  .shareOptionText1{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+.shareProfileImg1 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  margin-left: 0px;
+  margin-top: 30px;
+}
+
+.shareCoverImg {
+  width: 200px;
+  height: 40px;
+  border-radius: 2%;
+  object-fit: cover;
+  margin-right: 10px;
+  margin-left: 0px;
+  margin-top: 30px;
+}
   
   .loginDesc {
     font-size: 24px;
@@ -60,7 +86,7 @@
     height:fit-content;
     border-radius: 10px;
     border: none;
-    background-color: #1775ee;
+    background-color: #3b3b3b;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -80,7 +106,7 @@
     width: 20px;
     border-radius: 10px;
     border: none;
-    background-color: #1775ee;
+    background-color: #3b3b3b;
     color: white;
     font-size: 20px;
     font-weight: 500;

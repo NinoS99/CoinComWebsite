@@ -24,9 +24,7 @@ export default function Profile() {
   
       };
       fetchUser();
-    }, [username]);
-
-    console.log(user._id);
+    }, [user]);
 
     useEffect(() => {
       const getSubscribers = async ()=>{
@@ -49,13 +47,12 @@ export default function Profile() {
        subscribed = false;
     }
 
-    console.log(subscribed);
 
     return (
       <>
         <Topbar />
         <div className="profile">
-          <Sidebar />
+          
           <div className="profileRight">
             <div className="profileRightTop">
               <div className="profileCover">

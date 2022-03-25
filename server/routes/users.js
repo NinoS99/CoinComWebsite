@@ -56,6 +56,15 @@ router.get("/:username", async (req,res)=> {
     }
 });
 
+router.post('/search', (req,res)=>{
+    let userPattern = new RegExp("^" + req.body.query)
+    User.find({username:{$regex:userPattern}})
+    .then(user=>{
+        res.json({user})
+    }).catch(err=>{
+        res.status(500).json(err)
+    })
+})
 //Get a user with user id
 router.get("/id/:id", async (req,res)=> {
 
@@ -96,6 +105,7 @@ router.put("/:id/subscribe", async (req,res)=>{
         res.status(403).json("Cannot subscribe to yourself!");
     }
 });
+
 
 //Get subscriptions
 router.get("/subscriptions/:userId", async (req,res)=>{
