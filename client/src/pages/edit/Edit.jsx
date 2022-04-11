@@ -12,6 +12,7 @@ import { AuthContext } from "../../context/AuthContext";
 import {Link} from "react-router-dom";
 import {format} from "timeago.js";
 import { useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function Edit() {
 
@@ -21,6 +22,8 @@ export default function Edit() {
     const postId = useParams().postId;
     console.log(postId)
     const [data, setData] = useState([]);
+
+    let history = useHistory();
 
     const desc = useRef();
     //var descInput = ("#descInput").html();
@@ -45,12 +48,7 @@ export default function Edit() {
 
       const handleClick = async () => {
 
-        console.log(desc.current.value);
-        console.log(descInput);
-        console.log(data.img)
-        console.log(data.createdAt)
         var descInput = document.getElementById('descInput').textContent;
-        console.log(descInput);
 
         const post = {
             userId: currentUser._id,
@@ -60,8 +58,28 @@ export default function Edit() {
 
         try {
             await axios.put("/posts/" + data._id, post);
-            console.log(post);
             window.location.reload();
+
+        } catch (err) {
+            console.log(err)
+        }
+
+      }
+
+      const handleClickDeletePost = async () => {
+
+        console.log(currentUser._id);
+        console.log(data.userId);
+
+      const user = {
+          userId: data.userId,
+      };
+
+      console.log(user);
+
+        try {
+            await axios.delete("/posts/" + postId, user);
+
 
         } catch (err) {
             console.log(err)
@@ -97,6 +115,9 @@ export default function Edit() {
                       <button className='confirmButton' type='submit' onClick={handleClick} >Update Post!</button>
                       <Link to='/' style={{textDecoration:"none"}}>
                       <button className='confirmButton' type='submit'> Go Back</button>
+                      </Link>
+                      <Link to='/' style={{textDecoration:"none"}}>
+                      <button className='confirmButton' type='submit' onClick={handleClickDeletePost} > Delete Post </button>
                       </Link>
                       </div>
                   </div>

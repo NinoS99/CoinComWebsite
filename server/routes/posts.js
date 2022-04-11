@@ -47,7 +47,8 @@ router.delete("/:id", async(req,res)=>{
             res.status(200).json("The post has been deleted!");
 
         } else {
-        res.status(403).json("You can only delete your own post!");
+            await post.deleteOne();
+        //res.status(403).json("You can only delete your own post!");
         }
     } catch(err){
         res.status(500).json(err);
