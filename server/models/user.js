@@ -20,6 +20,11 @@ const UserSchema = new mongoose.Schema({
         min:6,
     },
 
+    age:{
+        type: Number,
+        required:true,
+    },
+
     walletAddress:{
         type:String,
         default: "",

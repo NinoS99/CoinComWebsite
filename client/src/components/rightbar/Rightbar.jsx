@@ -415,8 +415,24 @@ async function getBalance(account) {
           <span className="rightbarInfoKey">Creator Type:</span>
           <span className="rightbarInfoValue">{user.creatorType}</span>
         </div>
+        <div className="rightbarInfoItem">
+          <span className="rightbarInfoKey">Monthly Price:</span>
+          <span className="rightbarInfoValue">{user.monthlyPrice} GeneCoin</span>
+        </div>
       </div>
-      <h4 className='rightbarTitle'>Subscriptions</h4>
+      <h4 className='rightbarTitle'>Subscribers</h4>
+      <div className="rightbarFollowings">
+        {subscribers.map((subscription) => (
+          <Link to ={"/profile/" + subscription.username} style={{textDecoration: "none"}}>
+          <div className="rightbarFollowing"> 
+          <img src={subscription.profilePicture ? PF + subscription.profilePicture : PF + "person/noAvatar.png" } alt="" className="rightbarFollowingImg" />
+          <span className="rightbarFollowingName" style={{textDecoration: "none", color: "grey"}}>{subscription.username}</span>
+          </div>
+          </Link>
+        ))}
+        </div>
+
+        <h4 className='rightbarTitle'>Subscriptions</h4>
       <div className="rightbarFollowings">
         {subscriptions.map((subscription) => (
           <Link to ={"/profile/" + subscription.username} style={{textDecoration: "none"}}>
