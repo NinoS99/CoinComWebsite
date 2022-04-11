@@ -6,6 +6,7 @@ import Register from "./pages/register/Register"
 import Connect from "./pages/connect/Connect"
 import Settings from "./pages/settings/Settings"
 import Edit from "./pages/edit/Edit"
+import Report from "./pages/report/Report"
 import {
   BrowserRouter as Router,
   Routes,
@@ -45,7 +46,10 @@ function App() {
         </Route> 
         <Route exact path="/edit/:postId">
           <Edit/>
-        </Route> 
+        </Route>
+        <Route exact path="/report/:postId/:userId">
+          <Report/>
+        </Route>
       </Switch>
     </Router>
   );

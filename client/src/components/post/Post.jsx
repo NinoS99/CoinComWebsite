@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from "react";
 import "./post.css"
-import {MoreVert} from '@material-ui/icons'
+import {MoreVert, Flag} from '@material-ui/icons'
 //import {Users} from "../../dummyData"
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -78,6 +78,13 @@ export default function Post({post}) {
                 <Link to ={'../edit/' + post._id} style={{ textDecoration: 'none' }}>
                 <div className='postTopRight' >
                 <MoreVert color='white' style={{textDecoration: "none"}}/>
+                </div>
+                </Link>
+                )}
+                {post.userId !== currentUser._id && (
+                <Link to ={'../report/' + post._id + "/" + post.userId} style={{ textDecoration: 'none' }}>
+                <div className='postTopRight' >
+                <Flag color='white' style={{textDecoration: "none"}}/>
                 </div>
                 </Link>
                 )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./edit.css";
+import "./report.css";
 import Sidebar from '../../components/sidebar/Sidebar';
 import Topbar from '../../components/topbar/Topbar';
 import Rightbar from '../../components/rightbar/Rightbar';
@@ -14,27 +14,25 @@ import {format} from "timeago.js";
 import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function Edit() {
+export default function Report() {
 
-    //const [user, setUser] = useState({});
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user: currentUser } = useContext(AuthContext);
     const postId = useParams().postId;
-    console.log(postId)
+    const userId = useParams().userId;
+    console.log(postId);
+    console.log(userId);
     const [data, setData] = useState([]);
-
-    let history = useHistory();
+    const [userData, setData1] = useState([data]);
 
     const desc = useRef();
-    //var descInput = ("#descInput").html();
-    //var descInput = ('#descInput').text();
+
 
     useEffect(() => {
         const getData = async ()=>{
           try {
             const dataList = await axios.get("/posts/" + postId);
             setData(dataList.data);
-            console.log(data)
           } catch (err) {
             console.log(err);
           }
@@ -42,49 +40,44 @@ export default function Edit() {
         getData();
       },[postId]);
 
+
+      //console.log(user.username);
+
+    useEffect(() => {
+        const getData1 = async ()=>{
+            
+          try {
+            const dataList1 = await axios.get("/users/id/" + userId);
+            setData1(dataList1.data);
+          } catch (err) {
+            console.log(err);
+          }
+        };
+        getData1();
+      },[userData]);
+
       console.log(currentUser._id);
-      console.log(data.img)
-      console.log(data.createdAt)
+      console.log(postId._id);
+      console.log(userData.username);
 
       const handleClick = async () => {
 
         var descInput = document.getElementById('descInput').textContent;
 
-        const post = {
-            userId: currentUser._id,
-            desc: descInput? descInput : data.desc,
+        const report = {
+            postId: postId,
+            desc: descInput? descInput : "No reason given",
+            userReporting: currentUser._id,
 
         };
 
         try {
-            await axios.put("/posts/" + data._id, post);
-            window.location.reload();
+            await axios.post("/reports", report);
+            //window.location.reload();
 
         } catch (err) {
             console.log(err)
         }
-
-      }
-
-      const handleClickDeletePost = async () => {
-
-        console.log(currentUser._id);
-        console.log(data.userId);
-
-      const user = {
-          userId: data.userId,
-      };
-
-      console.log(user);
-
-        try {
-            await axios.delete("/posts/" + postId, user);
-
-
-        } catch (err) {
-            console.log(err)
-        }
-
 
       }
 
@@ -94,36 +87,43 @@ export default function Edit() {
         <Link to='/' style={{textDecoration:"none"}}>
         <img style= {{ width: undefined, height: '45px', resizeMode: 'contain', justifyContent: "left"}} src={PF + 'CoinComLogo.png'} alt="logo" />
         </Link>
-        <span className='editHeader'> Edit Post </span>
+        <span className='editHeader'> Report Post </span>
         </div>
           <div className="post1">
                   <div className='postWrapper'>
                       <div className='postTop'>
                           <div className='postTopLeft'>
                               <span className='postUsername'>
-                                  {currentUser.username}
+                                  {userData.username}
                               </span>
-                              <span className='postDate'> {format(data.createdAt)}</span>
+                              <span className='postDate'> date</span>
                           </div>
                       </div>
                       <div className='postCenter'>
-                          <div id='descInput' contenteditable="true" className='editInput1' ref={desc}> {data.desc} </div>
-                          {/*<input defaultValue={data.desc} className='editInput' ref={desc} /> */}
-                          <img className='postImg1' src={PF + data.img} alt='' />
-                      </div> 
+                        <span className='postText'>{data.desc}</span>
+                        <img className='postImg' src={PF+data.img} alt=''/>
+                      </div>
                       <div className='postBottom'>
-                      <button className='confirmButton' type='submit' onClick={handleClick} >Update Post!</button>
+                      <div id='descInput' contenteditable="true" className='editInput1' ref={desc}> Enter Reason for Report</div>
                       <Link to='/' style={{textDecoration:"none"}}>
-                      <button className='confirmButton' type='submit'> Go Back</button>
+                      <button className='confirmButton' type='submit' onClick={handleClick} >Report Post!</button>
                       </Link>
                       <Link to='/' style={{textDecoration:"none"}}>
-                      <button className='confirmButton' type='submit' onClick={handleClickDeletePost} > Delete Post </button>
+                      <button className='confirmButton' type='submit'> Go Back</button>
                       </Link>
                       </div>
                   </div>
                   
               </div>
-              </>
+        </>
       )
+
+
+
+
+
+
+
+
 
 }

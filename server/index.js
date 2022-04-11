@@ -11,6 +11,8 @@ const router = express.Router();
 const userRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
+const reportsRoute = require('./routes/reports');
+
 const multer = require("multer")
 const path = require("path")
 const user = require("./models/User");
@@ -60,6 +62,7 @@ app.post("/server/upload", upload.single("file"), (req,res)=> {
 app.use("/server/users" , userRoute);
 app.use("/server/auth" , authRoute);
 app.use("/server/posts" , postRoute);
+app.use("/server/reports" , reportsRoute);
 
 app.listen(8800,"0.0.0.0",()=>{
     console.log("Backend Server is Running!..")
