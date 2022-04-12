@@ -375,7 +375,7 @@ async function getBalance(account) {
             <a href="https://metamask.io/">
             <img  className='rightbarAd' src={PF+"metamask.png"} alt=''/>
             </a>
-            <h4 className='rightbarTitle'>Online Creators</h4>
+            <h4 className='rightbarTitle'>Popular Creators</h4>
             <ul className='rightbarFriendList'>
               {Users.map((u)=>(
                 <Online key={u.id} user={u} />
