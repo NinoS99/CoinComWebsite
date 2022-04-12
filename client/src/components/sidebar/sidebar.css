@@ -17,7 +17,7 @@
 }
 
 .sidebarWrapper {
-  padding: 20px;
+  padding: 10px;
 }
 
 .sidebarList {
@@ -39,6 +39,10 @@
 .searchBar1{
   margin-bottom: 20px;
   padding-top: 10px;
+}
+.sidebarLink{
+  color: grey;
+  margin-left: 0px;
 }
 .sidebarButton {
   

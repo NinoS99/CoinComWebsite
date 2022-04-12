@@ -7,6 +7,7 @@ import Connect from "./pages/connect/Connect"
 import Settings from "./pages/settings/Settings"
 import Edit from "./pages/edit/Edit"
 import Report from "./pages/report/Report"
+import Terms from "./pages/terms/Terms"
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,6 +41,9 @@ function App() {
         </Route> 
         <Route path="/connect">
         <Redirect to="/connect" /> : <Connect />
+        </Route> 
+        <Route path="/terms">
+        <Redirect to="/terms" /> : <Terms />
         </Route> 
         <Route path="/settings">
         <Redirect to="/settings" /> : <Settings />

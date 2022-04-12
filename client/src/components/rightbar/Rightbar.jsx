@@ -363,13 +363,14 @@ async function getBalance(account) {
     return (
       <>
        <div className='birthdayContainer'>
-            {/*<
-            <img className='birthdayImg' src={PF+"gift.png"} alt=''/>
-            span className='birthdayText'>
-              <b>Jon Black </b> and <b> 4 other creators </b>  have a birthday today!
-    </span>*/}
-            <b>Powered by: </b>
+       <Link to={'/terms'} style={{textDecoration:"none"}}>
+            <b >Terms and Conditions</b>
+            </Link>
             </div>  
+            <br>
+            </br>
+            <b>Powered by: </b>
+          
             <img className='rightbarAd' src={PF+"Genecoin.png"} alt=''/>
             <a href="https://metamask.io/">
             <img  className='rightbarAd' src={PF+"metamask.png"} alt=''/>

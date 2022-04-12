@@ -48,6 +48,22 @@
     margin-bottom: 20px;
 }
 
+.connectText{
+    text-align: center;
+    height: 20px;
+    width: 100%;
+    background-color: #3b3b3b ;
+    color: white;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    top: 10px;
+    justify-content: center;
+    text-size-adjust: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .connectButton{
     margin-top: 50px;
     margin-bottom: 50px;
