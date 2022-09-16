@@ -2,6 +2,9 @@
 
 Subscription-based website where users can subscribe to a content creator using the website’s cryptocurrency, built with MERN stack.
 
+
+![Alt text](server/public/images/CoinComWhiteLogo.png?raw=true "Title")
+
 ## Installation and Setup Instructions
 
 #### Example:  
